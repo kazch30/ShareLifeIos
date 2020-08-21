@@ -12,9 +12,11 @@ import GoogleAPIClientForREST
 import ZIPFoundation
 
 public let THUMBNAIL_FOLDER_NAME = "thumbnail"
-public let SOURCE_FILE_NAME = "thumbnail/sharelife.zip"
+public let TEMP_FOLDER_NAME = "work"
+public let SOURCE_FILE_NAME = "sharelife.zip"
 public let APP_NAME = "Share Life"
 public let OWNED_BY_OTHER = "owned by other"
+public let THUMBNAIL_WIDTH = 44
 
 protocol FileCommonDelegate {
 
@@ -402,6 +404,7 @@ class FileCommon: UIViewController {
 
         let fileManager = FileManager()
         var sourceURL = URL(fileURLWithPath: tmpDirectory)
+        sourceURL.appendPathComponent(THUMBNAIL_FOLDER_NAME)
         sourceURL.appendPathComponent(SOURCE_FILE_NAME)
         var destinationURL = URL(fileURLWithPath: tmpDirectory)
         destinationURL.appendPathComponent(THUMBNAIL_FOLDER_NAME)
@@ -486,12 +489,13 @@ class FileCommon: UIViewController {
 
         let fileManager = FileManager()
         var sourceURL = URL(fileURLWithPath: tmpDirectory)
+        sourceURL.appendPathComponent(TEMP_FOLDER_NAME)
         sourceURL.appendPathComponent(SOURCE_FILE_NAME)
         var destinationURL = URL(fileURLWithPath: tmpDirectory)
-        destinationURL.appendPathComponent(THUMBNAIL_FOLDER_NAME)
+        destinationURL.appendPathComponent(TEMP_FOLDER_NAME)
         debugPrint("destinationURL=" + destinationURL.path)
 
-        deleteFile(destinationURL.path)
+//        deleteFile(destinationURL.path)
 
         do {
             try fileManager.createDirectory(at: destinationURL, withIntermediateDirectories: true, attributes: nil)
@@ -517,11 +521,13 @@ class FileCommon: UIViewController {
                 break
             }
         }
+        
+        var pngURL = destinationURL
 
         if !imageFolder.isEmpty {
-            destinationURL.appendPathComponent(imageFolder)
+            pngURL.appendPathComponent(imageFolder)
 
-            guard let fileNames = try? FileManager.default.contentsOfDirectory(atPath: destinationURL.path) else {
+            guard let fileNames = try? FileManager.default.contentsOfDirectory(atPath: pngURL.path) else {
                 semaphoreQueue.signal()
                 return
             }
@@ -531,9 +537,9 @@ class FileCommon: UIViewController {
                 if let i = file.firstIndex(of: ".") {
                     let ext = String(file[file.index(i, offsetBy: 1)...])
                     if (ext == "png") {
-                        destinationURL.appendPathComponent(file)
-                        if let data:Data = fileManager.contents(atPath: destinationURL.path) {
-                            let size = CGSize(width: 32, height: 32)
+                        pngURL.appendPathComponent(file)
+                        if let data:Data = fileManager.contents(atPath: pngURL.path) {
+                            let size = CGSize(width: THUMBNAIL_WIDTH, height: THUMBNAIL_WIDTH)
                             let image = data.toImage()
                             if let image = image.resize(size: size) {
                                 if let delegate = delegate {
@@ -550,6 +556,8 @@ class FileCommon: UIViewController {
 
         }
 
+        deleteFile(destinationURL.path)
+
         semaphoreQueue.signal()
 
         debugPrint("<-DownloadedzipForThumbnail()")
@@ -561,19 +569,9 @@ class FileCommon: UIViewController {
 
         let tmpDirectory = NSTemporaryDirectory()
 
-        let fileManager = FileManager()
         var destinationURL = URL(fileURLWithPath: tmpDirectory)
         destinationURL.appendPathComponent(THUMBNAIL_FOLDER_NAME)
         debugPrint("destinationURL=" + destinationURL.path)
-
-        deleteFile(destinationURL.path)
-
-        do {
-            try fileManager.createDirectory(at: destinationURL, withIntermediateDirectories: true, attributes: nil)
-        } catch {
-            debugPrint("Extraction of ZIP archive failed with error:\(error)")
-            return
-        }
 
         DispatchQueue.global().async {
             debugPrint("Current thread \(Thread.current)")
