@@ -13,6 +13,7 @@ import ZIPFoundation
 
 public let THUMBNAIL_FOLDER_NAME = "thumbnail"
 public let TEMP_FOLDER_NAME = "work"
+public let CACHES_FOLDER_NAME = "Library/Caches"
 public let SOURCE_FILE_NAME = "sharelife.zip"
 public let APP_NAME = "Share Life"
 public let OWNED_BY_OTHER = "owned by other"
@@ -80,6 +81,73 @@ class FileCommon: UIViewController {
             }
         }
         debugPrint("<-deleteFile()")
+
+    }
+    
+    private func saveThumbnail(data:Data?) {
+        debugPrint("saveThumbnail()->")
+        let homeDirectory = NSHomeDirectory()
+
+        let fileManager = FileManager()
+        
+        let fileName = self.fileId + ".png"
+        var destinationURL = URL(fileURLWithPath: homeDirectory)
+        destinationURL.appendPathComponent(CACHES_FOLDER_NAME)
+        destinationURL.appendPathComponent(fileName)
+        debugPrint("destinationURL=" + destinationURL.path)
+        
+        if !fileManager.fileExists(atPath: destinationURL.path) {
+            if let data = data {
+                fileManager.createFile(atPath: destinationURL.path, contents: data, attributes: nil)
+            }
+        }
+        debugPrint("<-saveThumbnail()")
+    }
+    
+    private func loardThumbnail(id:String) -> UIImage? {
+        debugPrint("loardThumbnail()->")
+        let homeDirectory = NSHomeDirectory()
+        var image:UIImage?
+
+        let fileManager = FileManager()
+        
+        let fileName = id + ".png"
+        var sourceURL = URL(fileURLWithPath: homeDirectory)
+        sourceURL.appendPathComponent(CACHES_FOLDER_NAME)
+        sourceURL.appendPathComponent(fileName)
+        debugPrint("destinationURL=" + sourceURL.path)
+        let size = CGSize(width: THUMBNAIL_WIDTH, height: THUMBNAIL_WIDTH)
+        if let data:Data = fileManager.contents(atPath: sourceURL.path) {
+            image = data.toImage()
+            if let image = image?.resize(size: size) {
+                return image
+            }
+        }
+
+        debugPrint("<-loardThumbnail()")
+        return image
+    }
+    
+    private func deleteThumbnail(id:String) {
+        debugPrint("deleteThumbnail()->")
+        let homeDirectory = NSHomeDirectory()
+
+        let fileManager = FileManager()
+        
+        let fileName = id + ".png"
+        var destinationURL = URL(fileURLWithPath: homeDirectory)
+        destinationURL.appendPathComponent(CACHES_FOLDER_NAME)
+        destinationURL.appendPathComponent(fileName)
+        debugPrint("destinationURL=" + destinationURL.path)
+        
+        if fileManager.fileExists(atPath: destinationURL.path) {
+            do {
+                try fileManager.removeItem(atPath: destinationURL.path)
+            } catch {
+                debugPrint("removeItem() failed with error:\(error)")
+            }
+        }
+        debugPrint("<-deleteThumbnail()")
 
     }
     
@@ -345,11 +413,10 @@ class FileCommon: UIViewController {
                 debugPrint("ModifiedTime =" + info.ModifiedTimeFormat)
             }
 
-            /*
-             
-             キャッシュファイルのチェックとサムネイル設定
-             
-             */
+            // キャッシュファイルのチェックとサムネイル設定
+            if let image = loardThumbnail(id:info.FileId) {
+                info.Thumbnail = image
+            }
             
             //shareFileList.append(info)
             if let delegate = delegate {
@@ -495,7 +562,7 @@ class FileCommon: UIViewController {
         destinationURL.appendPathComponent(TEMP_FOLDER_NAME)
         debugPrint("destinationURL=" + destinationURL.path)
 
-//        deleteFile(destinationURL.path)
+        deleteFile(destinationURL.path)
 
         do {
             try fileManager.createDirectory(at: destinationURL, withIntermediateDirectories: true, attributes: nil)
@@ -545,10 +612,10 @@ class FileCommon: UIViewController {
                                 if let delegate = delegate {
                                     delegate.updateFileList(index: self.index, image: image)
                                 }
-
+                                
+                                saveThumbnail(data:image.pngData())
                             }
                         }
-//                        LoardImgFile(destinationURL)
                         break
                     }
                 }
@@ -563,7 +630,6 @@ class FileCommon: UIViewController {
         debugPrint("<-DownloadedzipForThumbnail()")
     }
 
-    
     func SetThumbnailImage(_ fileList: [ShareFileInfo]) {
         debugPrint("SetThumbnailImage() ->")
 
@@ -582,11 +648,12 @@ class FileCommon: UIViewController {
                 self.pngFileId = info.PngFileId
                 self.imgName = ""
             
-
-                self.getFileDataForThumbnail(self.fileId)
-                debugPrint("semaphoreQueue.wait() ->")
-                self.semaphoreQueue.wait()
-                debugPrint("<- semaphoreQueue.wait()")
+                if info.Thumbnail == nil {
+                    self.getFileDataForThumbnail(self.fileId)
+                    debugPrint("semaphoreQueue.wait() ->")
+                    self.semaphoreQueue.wait()
+                    debugPrint("<- semaphoreQueue.wait()")
+                }
                 self.index += 1
             }
         }

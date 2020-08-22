@@ -78,7 +78,7 @@ class ListTableViewController: UITableViewController {
         cell.textLabel?.text = info.Name
         cell.detailTextLabel?.text = info.ModifiedTimeFormat
 //        debugPrint("imageViewSize=\(cell.frame.size.height)" )
-        if info.thumbnail != nil {
+        if info.Thumbnail != nil {
             cell.imageView?.image = info.Thumbnail
         }
         return cell

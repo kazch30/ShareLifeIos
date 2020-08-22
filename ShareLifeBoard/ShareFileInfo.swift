@@ -36,9 +36,9 @@ struct ShareFileInfo {
         }
     }
     
-    var ModifiedTime:Date {
+    var ModifiedTime:Date? {
         get {
-            return modifiedTime!
+            return modifiedTime
         }
         set {
             modifiedTime = newValue
@@ -52,7 +52,10 @@ struct ShareFileInfo {
             format.dateFormat = "yyyy/MM/dd, E, kk:mm:ss"
                     
             //日付をStringに変換する
-            let sDate = format.string(from: modifiedTime!)
+            var sDate:String = ""
+            if let time = modifiedTime {
+                sDate = format.string(from: time)
+            }
             return sDate
         }
     }
@@ -84,9 +87,9 @@ struct ShareFileInfo {
         }
     }
     
-    var Thumbnail:UIImage {
+    var Thumbnail:UIImage? {
         get {
-            return thumbnail ?? UIImage()
+            return thumbnail
         }
         set {
             thumbnail = newValue
