@@ -18,6 +18,7 @@ public let SOURCE_FILE_NAME = "sharelife.zip"
 public let APP_NAME = "Share Life"
 public let OWNED_BY_OTHER = "owned by other"
 public let THUMBNAIL_WIDTH = 44
+public let CUSTOM_CELL_LEFT:CGFloat = 5
 
 protocol FileCommonDelegate {
 

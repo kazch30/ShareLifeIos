@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		741BC329F10338BC05E6E6E8 /* Pods_ShareLifeBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468ACEFF6DCA5D1A2ADF82D9 /* Pods_ShareLifeBoard.framework */; };
 		E51DF65A24DF99B90074568D /* ShareFileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51DF65924DF99B90074568D /* ShareFileInfo.swift */; };
+		E524ACA724F1F2C9003FAF88 /* hoge1.txt in Resources */ = {isa = PBXBuildFile; fileRef = E524AC9F24F1F2C9003FAF88 /* hoge1.txt */; };
+		E524ACA824F1F2C9003FAF88 /* hoge2.txt in Resources */ = {isa = PBXBuildFile; fileRef = E524ACA024F1F2C9003FAF88 /* hoge2.txt */; };
+		E524ACA924F1F2C9003FAF88 /* hoge3.txt in Resources */ = {isa = PBXBuildFile; fileRef = E524ACA124F1F2C9003FAF88 /* hoge3.txt */; };
+		E524ACAA24F1F2C9003FAF88 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E524ACA224F1F2C9003FAF88 /* image.jpg */; };
+		E524ACAB24F1F2C9003FAF88 /* test1.csv in Resources */ = {isa = PBXBuildFile; fileRef = E524ACA324F1F2C9003FAF88 /* test1.csv */; };
+		E524ACAC24F1F2C9003FAF88 /* test2.csv in Resources */ = {isa = PBXBuildFile; fileRef = E524ACA524F1F2C9003FAF88 /* test2.csv */; };
+		E524ACAD24F1F2C9003FAF88 /* test3.csv in Resources */ = {isa = PBXBuildFile; fileRef = E524ACA624F1F2C9003FAF88 /* test3.csv */; };
 		E52D2CFA24E3E70F00A0657B /* PermissionCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52D2CF924E3E70F00A0657B /* PermissionCommon.swift */; };
 		E549749B24E116A900C0458C /* DriveAppAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E549749A24E116A900C0458C /* DriveAppAuth.swift */; };
 		E549749D24E11A9100C0458C /* DriveFileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E549749C24E11A9100C0458C /* DriveFileList.swift */; };
@@ -20,15 +27,25 @@
 		E569085724E6740D000BC6CE /* CommentCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E569085624E6740D000BC6CE /* CommentCommon.swift */; };
 		E56D1EBA24E7B9B9006C87AB /* CommentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D1EB924E7B9B9006C87AB /* CommentInfo.swift */; };
 		E59DBCED24E55BA200684B18 /* PermissionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59DBCEC24E55BA200684B18 /* PermissionInfo.swift */; };
+		E5A2A48224F206B40002595C /* CustomPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A2A48124F206B40002595C /* CustomPresentationController.swift */; };
 		E5FE955F24E138B5002EFA02 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FE955E24E138B5002EFA02 /* ListTableViewController.swift */; };
 		E5FE956324E16866002EFA02 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FE956224E16866002EFA02 /* DetailViewController.swift */; };
 		E5FE956724E19B99002EFA02 /* FileCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FE956624E19B99002EFA02 /* FileCommon.swift */; };
+		E5FFF0E224F1205E00FC0C9F /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FFF0E024F1205E00FC0C9F /* CustomTableViewCell.swift */; };
+		E5FFF0E524F15D4B00FC0C9F /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5FFF0E424F15D4B00FC0C9F /* CustomTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		468ACEFF6DCA5D1A2ADF82D9 /* Pods_ShareLifeBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareLifeBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		807D9D278A6D4545C95CC806 /* Pods-ShareLifeBoard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareLifeBoard.release.xcconfig"; path = "Target Support Files/Pods-ShareLifeBoard/Pods-ShareLifeBoard.release.xcconfig"; sourceTree = "<group>"; };
 		E51DF65924DF99B90074568D /* ShareFileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShareFileInfo.swift; path = ShareLifeBoard/ShareFileInfo.swift; sourceTree = SOURCE_ROOT; };
+		E524AC9F24F1F2C9003FAF88 /* hoge1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hoge1.txt; sourceTree = "<group>"; };
+		E524ACA024F1F2C9003FAF88 /* hoge2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hoge2.txt; sourceTree = "<group>"; };
+		E524ACA124F1F2C9003FAF88 /* hoge3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hoge3.txt; sourceTree = "<group>"; };
+		E524ACA224F1F2C9003FAF88 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
+		E524ACA324F1F2C9003FAF88 /* test1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test1.csv; sourceTree = "<group>"; };
+		E524ACA524F1F2C9003FAF88 /* test2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test2.csv; sourceTree = "<group>"; };
+		E524ACA624F1F2C9003FAF88 /* test3.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test3.csv; sourceTree = "<group>"; };
 		E52D2CF924E3E70F00A0657B /* PermissionCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionCommon.swift; sourceTree = "<group>"; };
 		E549749A24E116A900C0458C /* DriveAppAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DriveAppAuth.swift; path = ShareLifeBoard/DriveAppAuth.swift; sourceTree = SOURCE_ROOT; };
 		E549749C24E11A9100C0458C /* DriveFileList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveFileList.swift; sourceTree = "<group>"; };
@@ -42,9 +59,12 @@
 		E569085624E6740D000BC6CE /* CommentCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCommon.swift; sourceTree = "<group>"; };
 		E56D1EB924E7B9B9006C87AB /* CommentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInfo.swift; sourceTree = "<group>"; };
 		E59DBCEC24E55BA200684B18 /* PermissionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionInfo.swift; sourceTree = "<group>"; };
+		E5A2A48124F206B40002595C /* CustomPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentationController.swift; sourceTree = "<group>"; };
 		E5FE955E24E138B5002EFA02 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		E5FE956224E16866002EFA02 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E5FE956624E19B99002EFA02 /* FileCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCommon.swift; sourceTree = "<group>"; };
+		E5FFF0E024F1205E00FC0C9F /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		E5FFF0E424F15D4B00FC0C9F /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		EEA0C54FD2AFFCE8B2084445 /* Pods-ShareLifeBoard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareLifeBoard.debug.xcconfig"; path = "Target Support Files/Pods-ShareLifeBoard/Pods-ShareLifeBoard.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +97,29 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E524AC9E24F1F2C9003FAF88 /* sample */ = {
+			isa = PBXGroup;
+			children = (
+				E524AC9F24F1F2C9003FAF88 /* hoge1.txt */,
+				E524ACA024F1F2C9003FAF88 /* hoge2.txt */,
+				E524ACA124F1F2C9003FAF88 /* hoge3.txt */,
+				E524ACA224F1F2C9003FAF88 /* image.jpg */,
+				E524ACA324F1F2C9003FAF88 /* test1.csv */,
+				E524ACA424F1F2C9003FAF88 /* test2 */,
+				E524ACA524F1F2C9003FAF88 /* test2.csv */,
+				E524ACA624F1F2C9003FAF88 /* test3.csv */,
+			);
+			name = sample;
+			path = ../../../../../../Volumes/BOOTCAMP/sample;
+			sourceTree = "<group>";
+		};
+		E524ACA424F1F2C9003FAF88 /* test2 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = test2;
+			sourceTree = "<group>";
+		};
 		E551101424D568E7001F8D5A = {
 			isa = PBXGroup;
 			children = (
@@ -107,11 +150,15 @@
 				E549749C24E11A9100C0458C /* DriveFileList.swift */,
 				E59DBCEC24E55BA200684B18 /* PermissionInfo.swift */,
 				E5FE956624E19B99002EFA02 /* FileCommon.swift */,
+				E5FFF0E024F1205E00FC0C9F /* CustomTableViewCell.swift */,
+				E5FFF0E424F15D4B00FC0C9F /* CustomTableViewCell.xib */,
+				E5A2A48124F206B40002595C /* CustomPresentationController.swift */,
 				E52D2CF924E3E70F00A0657B /* PermissionCommon.swift */,
 				E569085624E6740D000BC6CE /* CommentCommon.swift */,
 				E56D1EB924E7B9B9006C87AB /* CommentInfo.swift */,
 				E551102624D568E7001F8D5A /* Main.storyboard */,
 				E551102924D568E9001F8D5A /* Assets.xcassets */,
+				E524AC9E24F1F2C9003FAF88 /* sample */,
 				E551102B24D568E9001F8D5A /* LaunchScreen.storyboard */,
 				E551102E24D568E9001F8D5A /* Info.plist */,
 			);
@@ -179,8 +226,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				E551102D24D568E9001F8D5A /* LaunchScreen.storyboard in Resources */,
+				E524ACAD24F1F2C9003FAF88 /* test3.csv in Resources */,
+				E524ACA924F1F2C9003FAF88 /* hoge3.txt in Resources */,
 				E551102A24D568E9001F8D5A /* Assets.xcassets in Resources */,
+				E524ACAA24F1F2C9003FAF88 /* image.jpg in Resources */,
+				E5FFF0E524F15D4B00FC0C9F /* CustomTableViewCell.xib in Resources */,
+				E524ACAC24F1F2C9003FAF88 /* test2.csv in Resources */,
+				E524ACA724F1F2C9003FAF88 /* hoge1.txt in Resources */,
+				E524ACA824F1F2C9003FAF88 /* hoge2.txt in Resources */,
 				E551102824D568E7001F8D5A /* Main.storyboard in Resources */,
+				E524ACAB24F1F2C9003FAF88 /* test1.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5A2A48224F206B40002595C /* CustomPresentationController.swift in Sources */,
 				E51DF65A24DF99B90074568D /* ShareFileInfo.swift in Sources */,
 				E52D2CFA24E3E70F00A0657B /* PermissionCommon.swift in Sources */,
 				E5FE956724E19B99002EFA02 /* FileCommon.swift in Sources */,
@@ -245,6 +301,7 @@
 				E549749B24E116A900C0458C /* DriveAppAuth.swift in Sources */,
 				E5FE956324E16866002EFA02 /* DetailViewController.swift in Sources */,
 				E5FE955F24E138B5002EFA02 /* ListTableViewController.swift in Sources */,
+				E5FFF0E224F1205E00FC0C9F /* CustomTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

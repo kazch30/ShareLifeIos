@@ -54,8 +54,9 @@ class DetailViewController: CommentCommon {
         // sampleTableView の delegate 問い合わせ先を self に
         tableView.dataSource = self
         //cellに名前を付ける
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
+//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomCell")
+
         // UIImageViewのインスタンスをビューに追加
         self.view.addSubview(imageView)
         self.view.addSubview(tableView)
@@ -114,8 +115,40 @@ extension DetailViewController: UITableViewDelegate,UITableViewDataSource {
         return commentList.count
     }
 
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell") as? CustomTableViewCell {
+            debugPrint("imageViewSize=\(cell.frame.size.height)" )
+            return cell.frame.size.height
+        }
+          return 66 //それ以外だったら66を指定
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell") as? CustomTableViewCell {
+            let info = commentList[indexPath.row]
+            cell.NameLabel.text = info.Name
+            cell.TimeLabel.text = info.ModifiedTimeFormat
+            let fugafugaUIImage = UIImage()
+            let url: URL? = URL(string: "https:" + info.PhotoLink)
+            cell.ImageView.loadImageAsynchronously(url: url,cell: cell, defaultUIImage: fugafugaUIImage)
+            cell.ContentLabel.text = info.Content
+            if !info.IsReply {
+                cell.StackView.left = CUSTOM_CELL_LEFT
+            }
+            var image:UIImage?
+            if info.IsMe {
+                image = UIImage(named: "ic_edit_blue_24dp")
+            } else {
+                image = UIImage(named: "ic_reply_blue_24dp")
+            }
+            cell.ImageButton.setImage(image, for: .normal)
+
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+            return cell
+        }
+        return UITableViewCell()
+        
+/*
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         let info = commentList[indexPath.row]
         cell.textLabel?.text = info.Name
@@ -124,7 +157,7 @@ extension DetailViewController: UITableViewDelegate,UITableViewDataSource {
         let url: URL? = URL(string: "https:" + info.PhotoLink)
         cell.imageView?.loadImageAsynchronously(url: url,cell: cell, defaultUIImage: fugafugaUIImage)
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        return cell
+        return cell*/
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -187,6 +220,53 @@ extension UIImageView {
                     debugPrint("<-loadImageAsynchronously() failed")
                 }
             }
+        }
+    }
+}
+
+extension UIView {
+
+    var top : CGFloat{
+        get{
+            return self.frame.origin.y
+        }
+        set{
+            var frame       = self.frame
+            frame.origin.y  = newValue
+            self.frame      = frame
+        }
+    }
+
+    var bottom : CGFloat{
+        get{
+            return frame.origin.y + frame.size.height
+        }
+        set{
+            var frame       = self.frame
+            frame.origin.y  = newValue - self.frame.size.height
+            self.frame      = frame
+        }
+    }
+
+    var right : CGFloat{
+        get{
+            return self.frame.origin.x + self.frame.size.width
+        }
+        set{
+            var frame       = self.frame
+            frame.origin.x  = newValue - self.frame.size.width
+            self.frame      = frame
+        }
+    }
+
+    var left : CGFloat{
+        get{
+            return self.frame.origin.x
+        }
+        set{
+            var frame       = self.frame
+            frame.origin.x  = newValue
+            self.frame      = frame
         }
     }
 }
